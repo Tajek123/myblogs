@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taj's Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-top: 0;
+        }
+        .blog-post {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .blog-post:last-child {
+            border-bottom: none;
+        }
+        .blog-post h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .blog-post p {
+            margin: 5px 0;
+        }
+        #add-blog {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-align: center;
+        }
+        #add-blog:hover {
+            background-color: #45a049;
+        }
+        #blog-form {
+            display: none;
+            margin-top: 20px;
+        }
+        #blog-form input, #blog-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        #blog-form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #blog-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Taj's Blog</h1>
+</header>
+
+<main>
+    <div id="blog-posts">
+        <!-- Blog posts will be inserted here -->
+    </div>
+    <button id="add-blog">+ Add Blog Post</button>
+    <form id="blog-form">
+        <input type="text" id="title" placeholder="Title" required>
+        <textarea id="content" placeholder="Content" rows="5" required></textarea>
+        <button type="submit">Post Blog</button>
+    </form>
+</main>
+
+<script>
+    document.getElementById('add-blog').addEventListener('click', function() {
+        document.getElementById('blog-form').style.display = 'block';
+    });
+
+    document.getElementById('blog-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById('title').value;
+        const content = document.getElementById('content').value;
+
+        const post = document.createElement('div');
+        post.classList.add('blog-post');
+        post.innerHTML = '<h2>' + title + '</h2><p>' + content + '</p>';
+
+        document.getElementById('blog-posts').appendChild(post);
+
+        document.getElementById('blog-form').style.display = 'none';
+        document.getElementById('blog-form').reset();
+    });
+</script>
+
+</body>
+</html>
