@@ -93,6 +93,7 @@
             text-align: center;
         }
     </style>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 
 <body>
@@ -123,6 +124,12 @@
         <button type="submit">Post Blog</button>
     </form>
     <button id="checkout-button">Buy Premium</button>
+
+    <stripe-buy-button
+      buy-button-id="buy_btn_1PVTvvDKSb92j2e3tyaAASOu"
+      publishable-key="pk_live_51P18VQDKSb92j2e3vfMw3JoHQ4J9yg6ySdKCFgVZk5QjlIZ7Q7SBdmZMeyFDuSJdUpXrurTmtrFa7lu9EHXIhcx100v1YIY1VU"
+    >
+    </stripe-buy-button>
 </main>
 
 <script>
