@@ -196,8 +196,9 @@
         mainContent.classList.add('blur');
     });
 
-    termsModal.addEventListener('scroll', () => {
-        if (termsModal.scrollTop + termsModal.clientHeight >= termsModal.scrollHeight) {
+    document.getElementById('terms-modal-content').addEventListener('scroll', () => {
+        const termsContent = document.getElementById('terms-modal-content');
+        if (termsContent.scrollTop + termsContent.clientHeight >= termsContent.scrollHeight) {
             acceptButton.disabled = false;
         }
     });
