@@ -44,7 +44,13 @@ post '/webhook' do
     end
 
     # Handle the event
-    puts "Unhandled event type: #{event.type}"
+    case event.type
+    when 'checkout.session.completed'
+        session = event.data.object
+    # ... handle other event types
+    else
+        puts "Unhandled event type: #{event.type}"
+    end
 
     status 200
 end
