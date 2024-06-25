@@ -137,17 +137,40 @@
         document.getElementById('blog-form').reset();
     });
 </script>
-<footer>
-    <script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
-
-<stripe-buy-button
-  buy-button-id="buy_btn_1PVTvvDKSb92j2e3tyaAASOu"
-  publishable-key="pk_live_51P18VQDKSb92j2e3vfMw3JoHQ4J9yg6ySdKCFgVZk5QjlIZ7Q7SBdmZMeyFDuSJdUpXrurTmtrFa7lu9EHXIhcx100v1YIY1VU"
->
-</stripe-buy-button>
-</footer>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Footer Example</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        footer {
+            margin-top: auto;
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+    <main>
+        <p>This is the main content of the page.</p>
+    </main>
+    <footer>
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+        <stripe-buy-button
+            buy-button-id="buy_btn_1PVTvvDKSb92j2e3tyaAASOu"
+            publishable-key="pk_live_51P18VQDKSb92j2e3vfMw3JoHQ4J9yg6ySdKCFgVZk5QjlIZ7Q7SBdmZMeyFDuSJdUpXrurTmtrFa7lu9EHXIhcx100v1YIY1VU"
+        >
+        </stripe-buy-button>
+    </footer>
 
 </body>
 </html>
