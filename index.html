@@ -92,6 +92,47 @@
             padding: 20px;
             text-align: center;
         }
+        #terms-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        #terms-modal-content {
+            position: relative;
+            background: white;
+            margin: 10% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        #terms-modal h2 {
+            text-align: center;
+        }
+        #accept-terms {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #accept-terms:hover {
+            background-color: #45a049;
+        }
+        .blur {
+            filter: blur(5px);
+        }
     </style>
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
@@ -102,7 +143,7 @@
     <h1>Taj's Blog</h1>
 </header>
 
-<main>
+<main id="main-content">
     <div id="blog-posts">
         <div class="blog-post" bis_skin_checked="1">
             <h2>ABOUT ME</h2>
@@ -133,10 +174,38 @@
     <b>Buy premium to upload blogs</b>
 </main>
 
+<div id="terms-modal">
+    <div id="terms-modal-content">
+        <h2>Terms and Conditions</h2>
+        <p>Please read these terms and conditions carefully...</p>
+        <p>[Long terms and conditions content]</p>
+        <p>[More terms and conditions content]</p>
+        <p>[Even more terms and conditions content]</p>
+        <button id="accept-terms" disabled>Accept Terms and Conditions</button>
+    </div>
+</div>
+
 <script>
     const stripe = Stripe('pk_live_51P18VQDKSb92j2e3vfMw3JoHQ4J9yg6ySdKCFgVZk5QjlIZ7Q7SBdmZMeyFDuSJdUpXrurTmtrFa7lu9EHXIhcx100v1YIY1VU');
+    const termsModal = document.getElementById('terms-modal');
+    const mainContent = document.getElementById('main-content');
+    const acceptButton = document.getElementById('accept-terms');
 
     document.getElementById('checkout-button').addEventListener('click', () => {
+        termsModal.style.display = 'block';
+        mainContent.classList.add('blur');
+    });
+
+    termsModal.addEventListener('scroll', () => {
+        if (termsModal.scrollTop + termsModal.clientHeight >= termsModal.scrollHeight) {
+            acceptButton.disabled = false;
+        }
+    });
+
+    acceptButton.addEventListener('click', () => {
+        termsModal.style.display = 'none';
+        mainContent.classList.remove('blur');
+
         fetch('/create-checkout-session', {
             method: 'POST',
             headers: {
