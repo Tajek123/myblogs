@@ -125,17 +125,8 @@
     <button id="checkout-button">Buy Premium</button>
 </main>
 
-<footer>
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <stripe-buy-button
-        buy-button-id="buy_btn_1PVTvvDKSb92j2e3tyaAASOu"
-        publishable-key="pk_live_51P18VQDKSb92j2e3vfMw3JoHQ4J9yg6ySdKCFgVZk5QjlIZ7Q7SBdmZMeyFDuSJdUpXrurTmtrFa7lu9EHXIhcx100v1YIY1VU">
-    </stripe-buy-button>
-</footer>
-
 <script>
-    const stripe = Stripe('your-publishable-key');
+    const stripe = Stripe('pk_live_51P18VQDKSb92j2e3vfMw3JoHQ4J9yg6ySdKCFgVZk5QjlIZ7Q7SBdmZMeyFDuSJdUpXrurTmtrFa7lu9EHXIhcx100v1YIY1VU');
 
     document.getElementById('checkout-button').addEventListener('click', () => {
         fetch('/create-checkout-session', {
