@@ -122,10 +122,12 @@
         <textarea id="content" placeholder="Content" rows="5" required></textarea>
         <button type="submit">Post Blog</button>
     </form>
+    <button id="checkout-button">Buy Premium</button>
 </main>
 
 <footer>
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <stripe-buy-button
         buy-button-id="buy_btn_1PVTvvDKSb92j2e3tyaAASOu"
         publishable-key="pk_live_51P18VQDKSb92j2e3vfMw3JoHQ4J9yg6ySdKCFgVZk5QjlIZ7Q7SBdmZMeyFDuSJdUpXrurTmtrFa7lu9EHXIhcx100v1YIY1VU">
@@ -133,12 +135,37 @@
 </footer>
 
 <script>
-    // Simulate a check for premium status
-    const hasPremium = false; // Change this to true to simulate a premium user
+    const stripe = Stripe('your-publishable-key');
 
-    if (hasPremium) {
-        document.getElementById('add-blog').style.display = 'block';
-    }
+    document.getElementById('checkout-button').addEventListener('click', () => {
+        fetch('/create-checkout-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(session => {
+            return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(result => {
+            if (result.error) {
+                alert(result.error.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+    // Check premium status
+    fetch('/premium-status')
+    .then(response => response.json())
+    .then(data => {
+        if (data.hasPremium) {
+            document.getElementById('add-blog').style.display = 'block';
+        }
+    });
 
     document.getElementById('add-blog').addEventListener('click', function() {
         document.getElementById('blog-form').style.display = 'block';
