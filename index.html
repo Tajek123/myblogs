@@ -116,7 +116,7 @@
             <p>Hello this is my third blog. I will talk about my definitely true net worth. As I said I am rich. Even Jeff Bezos and Elon Musk just dream to be rich like me. So my real net worth is not million, not billion but 69 TRILLION dollars!!! Yeah and what you have! Not even 0€! HAHA!!! You are in debt!!! MUHAHAHAHAHAHAHAHA!!!</p>
         </div>
     </div>
-    <button id="add-blog">+ Add Blog Post</button>
+    <button id="add-blog" style="display: none;">+ Add Blog Post</button>
     <form id="blog-form">
         <input type="text" id="title" placeholder="Title" required>
         <textarea id="content" placeholder="Content" rows="5" required></textarea>
@@ -133,6 +133,13 @@
 </footer>
 
 <script>
+    // Simulate a check for premium status
+    const hasPremium = false; // Change this to true to simulate a premium user
+
+    if (hasPremium) {
+        document.getElementById('add-blog').style.display = 'block';
+    }
+
     document.getElementById('add-blog').addEventListener('click', function() {
         document.getElementById('blog-form').style.display = 'block';
     });
