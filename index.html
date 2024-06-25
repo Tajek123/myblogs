@@ -2,10 +2,7 @@
 <html lang="en">
 
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5724376452056475"
-     crossorigin="anonymous"></script>
-</head>
-<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5724376452056475" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taj's Blog</title>
@@ -15,6 +12,9 @@
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: #4CAF50;
@@ -23,6 +23,7 @@
             text-align: center;
         }
         main {
+            flex: 1;
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
@@ -85,8 +86,15 @@
         #blog-form button:hover {
             background-color: #45a049;
         }
+        footer {
+            margin-top: auto;
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
 
 <header>
@@ -96,16 +104,16 @@
 <main>
     <div id="blog-posts">
         <div class="blog-post" bis_skin_checked="1">
-            <h2>ABOUT ME
-            </h2><p>I am a rich guy with billions of dollars. My name is Taj Pocrnja Zupan I live in Thailand. I own 3 countries: Thailand, Taiwan and Tajikistan. cya Peasants!</p>
+            <h2>ABOUT ME</h2>
+            <p>I am a rich guy with billions of dollars. My name is Taj Pocrnja Zupan I live in Thailand. I own 3 countries: Thailand, Taiwan, and Tajikistan. cya Peasants!</p>
         </div>
         <div class="blog-post" bis_skin_checked="1">
-            <h2>My second blog
-            </h2><p>Hello! This is my second blog. I will talk about family. I have 1 brother. I have a mother and a father.</p>
+            <h2>My second blog</h2>
+            <p>Hello! This is my second blog. I will talk about family. I have 1 brother. I have a mother and a father.</p>
         </div>
         <div class="blog-post" bis_skin_checked="1">
-            <h2>My true networth
-            </h2><p>Hello this is my third blog. I will talk about my definitely true networth. As I said I am rich. even Jeff Bezos and Elon musk just dream to be rich like me. So my real networth is not million, not billion but 69 TRILLION dollars!!! Yeah and what you have! Not even 0€! HAHA!!! You are in debt!!! MUHAHAHAHAHAHAHAHA!!!</p>
+            <h2>My true net worth</h2>
+            <p>Hello this is my third blog. I will talk about my definitely true net worth. As I said I am rich. Even Jeff Bezos and Elon Musk just dream to be rich like me. So my real net worth is not million, not billion but 69 TRILLION dollars!!! Yeah and what you have! Not even 0€! HAHA!!! You are in debt!!! MUHAHAHAHAHAHAHAHA!!!</p>
         </div>
     </div>
     <button id="add-blog">+ Add Blog Post</button>
@@ -115,6 +123,14 @@
         <button type="submit">Post Blog</button>
     </form>
 </main>
+
+<footer>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <stripe-buy-button
+        buy-button-id="buy_btn_1PVTvvDKSb92j2e3tyaAASOu"
+        publishable-key="pk_live_51P18VQDKSb92j2e3vfMw3JoHQ4J9yg6ySdKCFgVZk5QjlIZ7Q7SBdmZMeyFDuSJdUpXrurTmtrFa7lu9EHXIhcx100v1YIY1VU">
+    </stripe-buy-button>
+</footer>
 
 <script>
     document.getElementById('add-blog').addEventListener('click', function() {
@@ -137,40 +153,6 @@
         document.getElementById('blog-form').reset();
     });
 </script>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Footer Example</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-        }
-        footer {
-            margin-top: auto;
-            background-color: #f1f1f1;
-            padding: 20px;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-    <main>
-        <p>This is the main content of the page.</p>
-    </main>
-    <footer>
-        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-        <stripe-buy-button
-            buy-button-id="buy_btn_1PVTvvDKSb92j2e3tyaAASOu"
-            publishable-key="pk_live_51P18VQDKSb92j2e3vfMw3JoHQ4J9yg6ySdKCFgVZk5QjlIZ7Q7SBdmZMeyFDuSJdUpXrurTmtrFa7lu9EHXIhcx100v1YIY1VU"
-        >
-        </stripe-buy-button>
-    </footer>
 
 </body>
 </html>
